@@ -1,0 +1,18 @@
+{
+  "name": "My-Portfolio-Backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/TomHessburg/My-Portfolio-Backend.git",
+  "author": "Thomas Hessburg <44884308+TomHessburg@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon"
+  },
+  "dependencies": {
+    "express": "^4.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
