@@ -16,7 +16,6 @@ server.get("/", (req, res) => {
 });
 
 server.post("/api/send-email", (req, res) => {
-  console.log(req.body);
   const data = req.body;
 
   const smtpTransport = nodemailer.createTransport({
@@ -28,17 +27,22 @@ server.post("/api/send-email", (req, res) => {
     }
   });
 
+  const output = `
+    <h3>You've got a new message request!</h3>
+    <h4>from: ${data.name}, email: ${data.email} </h4>
+    <h4>content:</h4>
+    <p>${data.content}</p>
+  `;
+
   const mailOptions = {
-    from: data.email,
+    from: `${data.name} <${data.email}>`,
     to: "thomas.hessburg@gmail.com",
     subject: `${
       data.subject.length
         ? data.subject
         : "IMPORTANT! POTFOLIO CONTACT FORM SUBMISSION"
     }`,
-    html: `<p>${data.name}</p>
-          <p>${data.email}</p>
-          <p>${data.content}</p>`
+    html: output
   };
 
   smtpTransport.sendMail(mailOptions, (error, response) => {
