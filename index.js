@@ -55,6 +55,8 @@ server.post("/api/send-email", (req, res) => {
   });
 });
 
-server.listen(5000, () => {
-  console.log("server listening on port 5000");
+const port = process.env.PORT || 5000;
+
+server.listen(port, () => {
+  console.log(`server listening on port ${port}`);
 });
